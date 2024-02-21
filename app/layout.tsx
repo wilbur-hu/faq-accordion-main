@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const worksans = localFont(
+  {
+    src: './fonts/WorkSans-VariableFont_wght.ttf',
+    display: 'swap',
+    variable: '--font-work-sans',
+  }
+);
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="h-full">
+      <body className={`${worksans.className} min-h-screen`}>{children}</body>
     </html>
   );
 }
