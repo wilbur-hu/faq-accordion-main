@@ -1,5 +1,24 @@
-import {QA} from '@/app/lib/qa';
+import { QA } from "@/app/lib/qa";
+import Image from "next/image";
+import QAItem from "./qritem";
+import star from "@/public/images/icon-star.svg"
 
-export default function FaqCard({qas}: {qas: QA[]}) {
-
+export default function FaqCard({ qas }: { qas: QA[] }) {
+  return (
+    <section className="bg-white w-[584px] rounded-xl p-10">
+      <h2 className="flex flex-row items-center">
+        <Image src={star} width="36" height="36" alt="star" />
+        <span className=" text-5xl font-bold pl-7">FAQs</span>
+      </h2>
+      <ul>
+        {qas.map((qa, idx) => {
+          return (
+            <li key={qa.id}>
+              <QAItem {...qa} />
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
 }

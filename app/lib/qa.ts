@@ -1,3 +1,3 @@
 export class QA {
-    constructor(public question: string, public answer: string) {}
+    constructor(public id: string, public question: string, public answer: string) {}
 }
