@@ -19,7 +19,6 @@ function prefetch(url: string) {
 export default function QAItem(props: QAItemProps) {
   const initExpanded = !!props.expanded;
 
-
   const [expanded, setExpanded] = useState(initExpanded);
 
   useEffect(() => {
@@ -29,19 +28,32 @@ export default function QAItem(props: QAItemProps) {
 
   function Question() {
     return (
-      <div className="flex flex-row justify-between ">
-        <h3>{props.question}</h3>
+      <div className="flex flex-row justify-between items-start ">
+        <h3 className=" text-dark-purple font-bold">{props.question}</h3>
         <button
+          className="relative shrink-0"
           onClick={() => {
             setExpanded(!expanded);
           }}
         >
           <NextImage
-            src={expanded ? minus : plus}
+            className="relative"
+            src={plus}
             width="24"
             height="24"
-            alt={expanded ? "fold" : "expand"}
+            alt={"expand"}
             priority={true}
+            style={{"visibility": expanded ? "hidden": "visible"}}
+          />
+
+          <NextImage
+            className="absolute left-0 top-0"
+            src={minus}
+            width="24"
+            height="24"
+            alt={"fold"}
+            priority={true}
+            style={{"visibility": !expanded ? "hidden": "visible"}}
           />
         </button>
       </div>
@@ -53,7 +65,7 @@ export default function QAItem(props: QAItemProps) {
       return null;
     }
 
-    return <p>{props.answer}</p>;
+    return <p className="mt-8 text-[#9a8d9a]">{props.answer}</p>;
   }
 
   return (

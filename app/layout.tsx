@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ReactDOM  from "react-dom";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -20,6 +21,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  ReactDOM.preload('/images/background-pattern-mobile.svg', {as: 'image'});
+  ReactDOM.preload('/images/background-pattern-desktop.svg', {as: 'image'});
+
   return (
     <html lang="en" className="h-full">
       <body className={`${worksans.className} min-h-screen`}>{children}</body>
